@@ -5,19 +5,18 @@ import PackageDescription
 
 let package = Package(
     name: "SSMUtilities",
+    platforms: [
+        .iOS(.v17),
+        .macOS(.v14),
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "SSMUtilities",
-            targets: ["SSMUtilities"]),
+        .library(name: "SSMUtilities", targets: ["SSMUtilities"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "SSMUtilities"),
-        .testTarget(
-            name: "SSMUtilitiesTests",
-            dependencies: ["SSMUtilities"]),
+        .target(name: "SSMUtilities"),
+        .testTarget(name: "SSMUtilitiesTests", dependencies: ["SSMUtilities"]),
     ]
 )
