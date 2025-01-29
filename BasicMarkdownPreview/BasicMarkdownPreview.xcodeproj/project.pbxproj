@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F40711112D49CB8300712776 /* SSMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = F40711102D49CB8300712776 /* SSMarkdown */; };
 		F40B3D362D496AB6005E6EBC /* BasicMarkdownPreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B3D352D496AB6005E6EBC /* BasicMarkdownPreviewApp.swift */; };
 		F40B3D3A2D496AB8005E6EBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B3D392D496AB8005E6EBC /* Assets.xcassets */; };
 		F40B3D3E2D496AB8005E6EBC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B3D3D2D496AB8005E6EBC /* Preview Assets.xcassets */; };
@@ -28,7 +27,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F40711112D49CB8300712776 /* SSMarkdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +40,7 @@
 				F40B3D442D496AC1005E6EBC /* Source */,
 				F40B3D342D496AB6005E6EBC /* BasicMarkdownPreview */,
 				F40B3D332D496AB6005E6EBC /* Products */,
+				F4538FC32D4A077B002AE62C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +86,13 @@
 			path = Samples;
 			sourceTree = "<group>";
 		};
+		F4538FC32D4A077B002AE62C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,7 +110,6 @@
 			);
 			name = BasicMarkdownPreview;
 			packageProductDependencies = (
-				F40711102D49CB8300712776 /* SSMarkdown */,
 			);
 			productName = BasicMarkdownPreview;
 			productReference = F40B3D322D496AB6005E6EBC /* BasicMarkdownPreview.app */;
@@ -135,7 +140,6 @@
 			);
 			mainGroup = F40B3D292D496AB6005E6EBC;
 			packageReferences = (
-				F407110F2D49CB8300712776 /* XCLocalSwiftPackageReference "../ssm-markdown" */,
 			);
 			productRefGroup = F40B3D332D496AB6005E6EBC /* Products */;
 			projectDirPath = "";
@@ -383,20 +387,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCLocalSwiftPackageReference section */
-		F407110F2D49CB8300712776 /* XCLocalSwiftPackageReference "../ssm-markdown" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../ssm-markdown";
-		};
-/* End XCLocalSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F40711102D49CB8300712776 /* SSMarkdown */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SSMarkdown;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F40B3D2A2D496AB6005E6EBC /* Project object */;
 }

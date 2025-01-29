@@ -5,6 +5,15 @@
       location = "group:BasicMarkdownPreview/BasicMarkdownPreview.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:ssm-markdown-typesetter">
+   </FileRef>
+   <FileRef
+      location = "group:ssm-typesetter-engine">
+   </FileRef>
+   <FileRef
+      location = "group:ssm-system-apis">
+   </FileRef>
+   <FileRef
       location = "group:ssm-markdown">
    </FileRef>
    <FileRef

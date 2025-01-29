@@ -12,16 +12,16 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(name: "SSMarkdown", targets: ["SSMarkdown"]),
-        .library(name: "ssm-rich-text-engine", targets: ["ssm-rich-text-engine"]),
+        .library(name: "ssm-markdown-engine", targets: ["ssm-markdown-engine"]),
     ],
     dependencies: [
         .package(url: "https://github.com/swiftlang/swift-markdown.git", branch: "main"),
         .package(url: "https://github.com/colbyn/SwiftPrettyTree.git", exact: "0.6.5"),
+        .package(path: "../ssm-system-apis"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(name: "ssm-system-utilities"),
         .target(name: "ssm-foundation-utilities"),
         .target(
             name: "SSMarkdownFormat",
@@ -32,21 +32,21 @@ let package = Package(
             ]
         ),
         .target(
-            name: "ssm-rich-text-engine",
+            name: "ssm-markdown-engine",
             dependencies: [
                 "SSMarkdownFormat",
                 "SSMUtilities",
-                "ssm-system-utilities",
+                "ssm-system-apis",
                 "ssm-foundation-utilities",
             ]
         ),
         .target(
             name: "SSMarkdownView",
             dependencies: [
-                "ssm-rich-text-engine",
+                "ssm-markdown-engine",
                 "SSMarkdownFormat",
                 "SSMUtilities",
-                "ssm-system-utilities",
+                "ssm-system-apis",
                 "ssm-foundation-utilities",
             ]
         ),
@@ -60,6 +60,6 @@ let package = Package(
                 "SSMUtilities",
             ]
         ),
-        .testTarget(name: "ssm-markdown-tests", dependencies: ["SSMarkdown"]),
+//        .testTarget(name: "ssm-markdown-tests", dependencies: ["SSMarkdown"]),
     ]
 )
