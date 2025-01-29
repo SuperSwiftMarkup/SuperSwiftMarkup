@@ -1,0 +1,33 @@
+{
+  "originHash" : "d10360e09e9a9ce777271a06ea4053844811910b145d092d1a3b5f1568b5bb3a",
+  "pins" : [
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-cmark.git",
+      "state" : {
+        "branch" : "gfm",
+        "revision" : "b022b08312decdc46585e0b3440d97f6f22ef703"
+      }
+    },
+    {
+      "identity" : "swift-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-markdown.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3588f0449f1592a5c746079a5c7e6c8b62ba55eb"
+      }
+    },
+    {
+      "identity" : "swiftprettytree",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/colbyn/SwiftPrettyTree.git",
+      "state" : {
+        "revision" : "96e678782def231fdd442d07e8a65fb5dac1e071",
+        "version" : "0.6.5"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -12,3 +12,9 @@
 // select.
 //
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
+
+import Foundation
+
+public struct SSDocument {
+    let blocks: [ SSBlock ]
+}

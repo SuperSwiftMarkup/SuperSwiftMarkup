@@ -15,6 +15,8 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../SSMUtilities"),
+        .package(url: "https://github.com/swiftlang/swift-markdown.git", branch: "main"),
+        .package(url: "https://github.com/colbyn/SwiftPrettyTree.git", exact: "0.6.5"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -22,7 +24,9 @@ let package = Package(
         .target(
             name: "SSMarkdownFormat",
             dependencies: [
-                "SSMUtilities"
+                "SSMUtilities",
+                "SwiftPrettyTree",
+                .product(name: "Markdown", package: "swift-markdown"),
             ]
         ),
         .testTarget(name: "SSMarkdownFormatTests", dependencies: ["SSMarkdownFormat"]),
