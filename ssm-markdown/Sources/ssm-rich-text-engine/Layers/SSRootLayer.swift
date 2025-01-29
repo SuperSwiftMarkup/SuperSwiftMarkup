@@ -14,3 +14,11 @@
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
 
 import Foundation
+import ssm_system_utilities
+
+internal final class SSRootLayer: CALayer {
+    override class func defaultAction(forKey event: String) -> CAAction? {
+        // Suppress default animation of opacity when adding comment bubbles.
+        return NSNull()
+    }
+}

@@ -14,20 +14,29 @@
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
 
 #if os(macOS) && !targetEnvironment(macCatalyst)
-import AppKit
+@_exported import AppKit
 public typealias XFont = NSFont
 public typealias XFontDescriptor = NSFontDescriptor
 public typealias XColor = NSColor
 public typealias XView = NSView
 #elseif os(iOS) || os(visionOS)
-import UIKit
+@_exported import UIKit
 public typealias XFont = UIFont
 public typealias XFontDescriptor = UIFontDescriptor
 public typealias XColor = UIColor
 public typealias XView = UIView
 #endif
 
-public typealias XUnderlineStyle = NSUnderlineStyle
-public typealias XMutableParagraphStyle = NSMutableParagraphStyle
-public typealias XTextTab = NSTextTab
-public typealias XTextAlignment = NSTextAlignment
+//public typealias XUnderlineStyle = NSUnderlineStyle
+//public typealias XMutableParagraphStyle = NSMutableParagraphStyle
+//public typealias XTextTab = NSTextTab
+//public typealias XTextAlignment = NSTextAlignment
+
+//public typealias XTextLayoutManager = NSTextLayoutManager
+//public typealias XTextLayoutManagerDelegate = NSTextLayoutManagerDelegate
+//public typealias XTextLocation  = NSTextLocation
+//public typealias XTextElement  = NSTextElement
+//public typealias XTextLayoutFragment  = NSTextLayoutFragment
+//public typealias XTextViewportLayoutControllerDelegate = NSTextViewportLayoutControllerDelegate
+//public typealias XTextViewportLayoutController = NSTextViewportLayoutController
+

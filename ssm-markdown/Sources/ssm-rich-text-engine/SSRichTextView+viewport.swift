@@ -13,4 +13,99 @@
 //
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
 
-import Foundation
+import ssm_system_utilities
+
+extension SSRichTextView: NSTextViewportLayoutControllerDelegate {
+    /// The current viewport, typically the view visible bounds with overdraw.
+    public func viewportBounds(for textViewportLayoutController: NSTextViewportLayoutController) -> CGRect {
+        let overdrawRect = preparedContentRect
+        let visibleRect = self.visibleRect
+        var minY: CGFloat = 0
+        var maxY: CGFloat = 0
+        if overdrawRect.intersects(visibleRect) {
+            // Use preparedContentRect for vertical overdraw and ensure visibleRect is included at the minimum,
+            // the width is always bounds width for proper line wrapping.
+            minY = min(overdrawRect.minY, max(visibleRect.minY, 0))
+            maxY = max(overdrawRect.maxY, visibleRect.maxY)
+        } else {
+            // We use visible rect directly if preparedContentRect does not intersect.
+            // This can happen if overdraw has not caught up with scrolling yet, such as before the first layout.
+            minY = visibleRect.minY
+            maxY = visibleRect.maxY
+        }
+        return CGRect(x: bounds.minX, y: minY, width: bounds.width, height: maxY - minY)
+    }
+    /// Called when textViewportLayoutController is about to layout.
+    /// Layout information on textViewportLayoutController is up-to-date at the point of this call.
+    public func textViewportLayoutControllerWillLayout(_ controller: NSTextViewportLayoutController) {
+        rootContentLayer.sublayers = nil
+        CATransaction.begin()
+    }
+    /// Called when textViewportLayoutController is about to layout.
+    /// Layout information on textViewportLayoutController is up-to-date at the point of this call.
+    public func textViewportLayoutControllerDidLayout(_ controller: NSTextViewportLayoutController) {
+        CATransaction.commit()
+        updateSelectionHighlights()
+        updateContentSizeIfNeeded()
+        adjustViewportOffsetIfNeeded()
+    }
+    /// Called when textViewportLayoutController lays out a given textLayoutFragment.
+    /// The delegate should arrange to present the text layout fragment in the UI, e.g. a sublayer/subview.
+    /// Layout information such as viewportBounds on textViewportLayoutController is not up-to-date at the point of this call.
+    public func textViewportLayoutController(
+        _ controller: NSTextViewportLayoutController,
+        configureRenderingSurfaceFor textLayoutFragment: NSTextLayoutFragment
+    ) {
+        assert(textLayoutFragment.textElement!.childElements.isEmpty)
+        let (layer, layerIsNew) = findOrCreateLayer(textLayoutFragment)
+        if !layerIsNew {
+            let oldPosition = layer.position
+            let oldBounds = layer.bounds
+            layer.updateGeometry()
+            if oldBounds != layer.bounds {
+                layer.setNeedsDisplay()
+            }
+            if oldPosition != layer.position {
+                animate(layer, from: oldPosition, to: layer.position)
+            }
+        }
+//        if layer.showLayerFrames != showLayerFrames {
+//            layer.showLayerFrames = showLayerFrames
+//            layer.setNeedsDisplay()
+//        }
+        
+        rootContentLayer.addSublayer(layer)
+    }
+}
+
+// MARK: - INTERNAL HELPERS -
+
+extension SSRichTextView {
+    private func findOrCreateLayer(_ textLayoutFragment: NSTextLayoutFragment) -> (SSTextFragmentLayer, Bool) {
+        if let layer = fragmentLayerMap.object(forKey: textLayoutFragment) {
+            return (layer, false)
+        } else {
+            let layer = SSTextFragmentLayer(layoutFragment: textLayoutFragment, padding: padding)
+//            layer.parent = self
+            fragmentLayerMap.setObject(layer, forKey: textLayoutFragment)
+            return (layer, true)
+        }
+    }
+    
+    private func forAllLayers(function: @escaping (SSTextFragmentLayer) -> ()) {
+        for object in fragmentLayerMap.objectEnumerator()?.allObjects ?? [] {
+            if let layer = object as? SSTextFragmentLayer {
+                function(layer)
+            }
+        }
+    }
+    
+    private func animate(_ layer: CALayer, from source: CGPoint, to destination: CGPoint) {
+        let slowAnimations = false
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.fromValue = source
+        animation.toValue = destination
+        animation.duration = slowAnimations ? 2.0 : 0.3
+        layer.add(animation, forKey: nil)
+    }
+}

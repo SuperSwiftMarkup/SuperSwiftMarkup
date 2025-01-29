@@ -14,3 +14,27 @@
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
 
 import Foundation
+import ssm_system_utilities
+
+internal final class SSTextFragmentLayer: CALayer {
+    init(layoutFragment: NSTextLayoutFragment, padding: CGFloat) {
+//        self.layoutFragment = layoutFragment
+//        self.padding = padding
+//        super.init()
+//        masksToBounds = false
+//        contentsScale = 2
+//        updateGeometry()
+//        setNeedsDisplay()
+        fatalError("TODO")
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension SSTextFragmentLayer {
+    public func updateGeometry() {
+        fatalError("TODO")
+    }
+}

@@ -17,4 +17,74 @@ import Foundation
 import SSMUtilities
 import ssm_system_utilities
 
-public class SSRichTextView: XView {}
+public final class SSRichTextView: XView {
+    internal var textLayoutManager: NSTextLayoutManager = NSTextLayoutManager() {
+        willSet {
+            textLayoutManager.delegate = nil
+            textLayoutManager.textViewportLayoutController.delegate = nil
+        }
+        didSet {
+            textLayoutManager.delegate = self
+            textLayoutManager.textViewportLayoutController.delegate = self
+            updateContentSizeIfNeeded()
+            updateTextContainerSize()
+            layer!.setNeedsLayout()
+        }
+    }
+    
+    internal var textContentStorage: NSTextContentStorage = NSTextContentStorage() {
+        didSet {
+            textContentStorage.textStorage?.setAttributedString(NSAttributedString(string: "Hello World!"))
+            textContentStorage.addTextLayoutManager(textLayoutManager)
+            textContentStorage.primaryTextLayoutManager = textLayoutManager
+            updateContentSizeIfNeeded()
+        }
+    }
+    
+    // MARK: - INITIALIZATION & DE-INITIALIZATION -
+    override init(frame: CGRect) {
+        fragmentLayerMap = .weakToWeakObjects()
+        super.init(frame: frame)
+        // - -
+        wantsLayer = true
+        layer?.addSublayer(rootContentLayer)
+        layer?.addSublayer(rootSelectionLayer)
+        fragmentLayerMap = NSMapTable.weakToWeakObjects()
+        autoresizingMask = [ .width, .height ]
+        postsBoundsChangedNotifications = true
+        postsFrameChangedNotifications = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+       if let observer = boundsDidChangeObserver {
+           NotificationCenter.default.removeObserver(observer)
+       }
+    }
+    
+    // MARK: - CONTENT RENDERING -
+    internal var rootContentLayer: SSRootLayer = SSRootLayer()
+    internal var rootSelectionLayer: SSRootLayer = SSRootLayer()
+    internal var fragmentLayerMap: NSMapTable<NSTextLayoutFragment, SSTextFragmentLayer>
+    internal var padding: CGFloat = 5.0
+    
+    // MARK: - MISCELLANEOUS -
+    internal var boundsDidChangeObserver: Any? = nil
+    internal var focusSelectionRequest: FocusSelectionRequest? = nil {
+        didSet {
+            if focusSelectionRequest != nil {
+                needsLayout = true
+            }
+        }
+    }
+    internal enum FocusSelectionRequest {
+        case scrollTo(ScrollDirection)
+        internal enum ScrollDirection {
+            case up
+            case down
+        }
+    }
+}
