@@ -18,6 +18,8 @@ Nowadays it’s not so easy to become an App Store millionaire when apps are a d
 
 The overarching goal of the SuperSwiftMarkup libraries is to deliver the next generation of text views that support user experiences unparalleled by web technologies. So that you can squeeze out that extra competitive edge in this hyper saturated and globalized marketplace of software.
 
+(Luckily iOS developers have been known to be especially picky when it comes to text functionality. Just ask the Flutter team.) 
+
 # Introduction for Developers
 
 **Welcome to the Super Swift Markup libraries, apps and whatnot.** Collectively referred to as the *Super Swift Markup* projects. 
