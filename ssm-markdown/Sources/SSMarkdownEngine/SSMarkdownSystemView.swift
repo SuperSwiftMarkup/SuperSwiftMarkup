@@ -13,22 +13,7 @@
 //
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
-import AppKit
-public typealias XFont = NSFont
-public typealias XFontDescriptor = NSFontDescriptor
-public typealias XColor = NSColor
-public typealias XView = NSView
-#elseif os(iOS) || os(visionOS)
-import UIKit
-public typealias XFont = UIFont
-public typealias XFontDescriptor = UIFontDescriptor
-public typealias XColor = UIColor
-public typealias XView = UIView
-#endif
+import Foundation
+import SSMUtilities
 
-public typealias XUnderlineStyle = NSUnderlineStyle
-public typealias XMutableParagraphStyle = NSMutableParagraphStyle
-public typealias XTextTab = NSTextTab
-public typealias XTextAlignment = NSTextAlignment
-
+public class SSMSystemTextView: XView {}

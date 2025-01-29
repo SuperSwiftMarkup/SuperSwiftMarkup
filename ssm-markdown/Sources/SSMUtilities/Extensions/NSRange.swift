@@ -13,22 +13,15 @@
 //
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
-import AppKit
-public typealias XFont = NSFont
-public typealias XFontDescriptor = NSFontDescriptor
-public typealias XColor = NSColor
-public typealias XView = NSView
-#elseif os(iOS) || os(visionOS)
-import UIKit
-public typealias XFont = UIFont
-public typealias XFontDescriptor = UIFontDescriptor
-public typealias XColor = UIColor
-public typealias XView = UIView
-#endif
 
-public typealias XUnderlineStyle = NSUnderlineStyle
-public typealias XMutableParagraphStyle = NSMutableParagraphStyle
-public typealias XTextTab = NSTextTab
-public typealias XTextAlignment = NSTextAlignment
+import Foundation
 
+extension NSRange {
+    /// A value indicating that a requested item couldn’t be found or doesn’t exist.
+    public static let notFound = NSRange(location: NSNotFound, length: 0)
+    
+    /// A Boolean value indicating whether the range is empty.
+    ///
+    /// Range is empty when its length is equal 0
+    @inlinable public var isEmpty: Bool { length == 0 }
+}

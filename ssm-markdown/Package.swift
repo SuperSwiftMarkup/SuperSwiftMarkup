@@ -12,6 +12,7 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(name: "SSMarkdown", targets: ["SSMarkdown"]),
+        .library(name: "SSMarkdownEngine", targets: ["SSMarkdownEngine"]),
     ],
     dependencies: [
         .package(url: "https://github.com/swiftlang/swift-markdown.git", branch: "main"),
@@ -27,8 +28,23 @@ let package = Package(
                 .product(name: "Markdown", package: "swift-markdown"),
             ]
         ),
-        .target(name: "SSMarkdownView"),
+        .target(
+            name: "SSMarkdownEngine",
+            dependencies: [
+                "SSMarkdownFormat",
+                "SSMUtilities",
+            ]
+        ),
+        .target(
+            name: "SSMarkdownView",
+            dependencies: [
+                "SSMarkdownEngine",
+                "SSMarkdownFormat",
+                "SSMUtilities",
+            ]
+        ),
         .target(name: "SSMUtilities"),
+        .target(name: "SSDocumentAction"),
         .target(
             name: "SSMarkdown",
             dependencies: [
