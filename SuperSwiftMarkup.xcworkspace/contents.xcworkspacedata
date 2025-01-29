@@ -28,4 +28,7 @@
    <FileRef
       location = "group:/Users/colbyn/Developer/SuperSwiftMarkup/SuperSwiftMarkup/NOTES.md">
    </FileRef>
+   <FileRef
+      location = "group:/Users/colbyn/Developer/SuperSwiftMarkup/SuperSwiftMarkup/SWIFT-TEMPLATE">
+   </FileRef>
 </Workspace>
