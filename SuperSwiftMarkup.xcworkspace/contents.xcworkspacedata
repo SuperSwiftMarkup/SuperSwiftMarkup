@@ -5,15 +5,6 @@
       location = "group:BasicMarkdownPreview/BasicMarkdownPreview.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SSMarkdownView">
-   </FileRef>
-   <FileRef
-      location = "group:SSMarkdownFormat">
-   </FileRef>
-   <FileRef
-      location = "group:SSMUtilities">
-   </FileRef>
-   <FileRef
       location = "group:README.md">
    </FileRef>
    <FileRef
