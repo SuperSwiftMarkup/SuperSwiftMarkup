@@ -18,6 +18,7 @@ import ssm_system_utilities
 extension SSRichTextView: NSTextViewportLayoutControllerDelegate {
     /// The current viewport, typically the view visible bounds with overdraw.
     public func viewportBounds(for textViewportLayoutController: NSTextViewportLayoutController) -> CGRect {
+        print("SSRichTextView.viewportBounds")
         let overdrawRect = preparedContentRect
         let visibleRect = self.visibleRect
         var minY: CGFloat = 0
@@ -47,7 +48,7 @@ extension SSRichTextView: NSTextViewportLayoutControllerDelegate {
         CATransaction.commit()
         updateSelectionHighlights()
         updateContentSizeIfNeeded()
-        adjustViewportOffsetIfNeeded()
+//        adjustViewportOffsetIfNeeded()
     }
     /// Called when textViewportLayoutController lays out a given textLayoutFragment.
     /// The delegate should arrange to present the text layout fragment in the UI, e.g. a sublayer/subview.
@@ -85,7 +86,7 @@ extension SSRichTextView {
         if let layer = fragmentLayerMap.object(forKey: textLayoutFragment) {
             return (layer, false)
         } else {
-            let layer = SSTextFragmentLayer(layoutFragment: textLayoutFragment, padding: padding)
+            let layer = SSTextFragmentLayer(layoutFragment: textLayoutFragment, padding: padding, parent: self)
 //            layer.parent = self
             fragmentLayerMap.setObject(layer, forKey: textLayoutFragment)
             return (layer, true)

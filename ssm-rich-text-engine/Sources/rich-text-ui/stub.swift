@@ -1,4 +1,4 @@
-// Created by Colbyn Wadman on 2025-1-28 (ISO 8601)
+// Created by Colbyn Wadman on 2025-1-29 (ISO 8601)
 //
 // All SuperSwiftMarkup source code and other software material (unless
 // explicitly stated otherwise) is available under a dual licensing model.
@@ -12,16 +12,3 @@
 // select.
 //
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
-
-import Foundation
-import ssm_system_utilities
-
-extension SSRichTextView: NSTextLayoutManagerDelegate {
-    public func textLayoutManager(
-        _ textLayoutManager: NSTextLayoutManager,
-       textLayoutFragmentFor location: NSTextLocation,
-       in textElement: NSTextElement
-    ) -> NSTextLayoutFragment {
-        return NSTextLayoutFragment(textElement: textElement, range: textElement.elementRange!)
-    }
-}

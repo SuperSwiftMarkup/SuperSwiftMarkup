@@ -41,6 +41,7 @@ extension SSRichTextView {
                 self!.layer?.setNeedsLayout()
             }
         }
+        self.layer?.setNeedsLayout()
     }
 
     public override func setFrameSize(_ newSize: NSSize) {
@@ -48,7 +49,10 @@ extension SSRichTextView {
         updateTextContainerSize()
     }
     public override var intrinsicContentSize: NSSize {
-        textLayoutManager.usageBoundsForTextContainer.size
+        if let textLayoutManager = textLayoutManager {
+            return textLayoutManager.usageBoundsForTextContainer.size
+        }
+        return super.intrinsicContentSize
     }
     public override func layout() {
         super.layout()
@@ -62,6 +66,39 @@ extension SSRichTextView {
     }
 }
 
+extension SSRichTextView {
+    internal func adjustViewportOffsetIfNeeded() {
+        guard let textLayoutManager = textLayoutManager else { return }
+        let viewportLayoutController = textLayoutManager.textViewportLayoutController
+        guard let viewportRange = viewportLayoutController.viewportRange else { return }
+        let contentOffset = scrollView!.contentView.bounds.minY
+        if contentOffset < scrollView!.contentView.bounds.height &&
+            viewportRange.location.compare(textLayoutManager.documentRange.location) == .orderedDescending {
+            // Nearing top, see if we need to adjust and make room above.
+            adjustViewportOffset()
+        } else if viewportLayoutController.viewportRange!.location.compare(textLayoutManager.documentRange.location) == .orderedSame {
+            // At top, see if we need to adjust and reduce space above.
+            adjustViewportOffset()
+        }
+    }
+    private func adjustViewportOffset() {
+        let viewportLayoutController = textLayoutManager?.textViewportLayoutController
+        var layoutYPoint: CGFloat = 0
+        textLayoutManager?.enumerateTextLayoutFragments(
+            from: viewportLayoutController?.viewportRange!.location,
+            options: [.reverse, .ensuresLayout]
+        ) { layoutFragment in
+            layoutYPoint = layoutFragment.layoutFragmentFrame.origin.y
+            return true
+        }
+        if layoutYPoint != 0 {
+            let adjustmentDelta = bounds.minY - layoutYPoint
+            viewportLayoutController?.adjustViewport(byVerticalOffset: adjustmentDelta)
+            scroll(CGPoint(x: scrollView!.contentView.bounds.minX, y: scrollView!.contentView.bounds.minY + adjustmentDelta))
+        }
+    }
+}
+
 // TODO: CLEANUP THE FOLLOWING INTERNAL HELPERS -
 
 extension SSRichTextView {
@@ -70,7 +107,7 @@ extension SSRichTextView {
         if let focusSelectionRequest = focusSelectionRequest {
             switch focusSelectionRequest {
             case .scrollTo(.up):
-                let targetRange = textLayoutManager.textSelections
+                let targetRange = textLayoutManager?.textSelections
                     .flatMap(\.textRanges)
                     .flatMap { [ NSTextRange(location: $0.location), NSTextRange(location: $0.endLocation) ] }
                     .sorted(by: { $0.location < $1.location })
@@ -79,7 +116,7 @@ extension SSRichTextView {
                     scrollToVisible(textRange, type: .standard)
                 }
             case .scrollTo(.down):
-                let targetRange = textLayoutManager.textSelections
+                let targetRange = textLayoutManager?.textSelections
                     .flatMap(\.textRanges)
                     .flatMap { [ NSTextRange(location: $0.location), NSTextRange(location: $0.endLocation) ] }
                     .sorted(by: { $0.location < $1.location })
@@ -96,7 +133,7 @@ extension SSRichTextView {
         // for far jump it tries to layout everything starting at location 0
         // even though viewport range is properly calculated.
         // No known workaround.
-        textLayoutManager.textViewportLayoutController.layoutViewport()
+        textLayoutManager?.textViewportLayoutController.layoutViewport()
     }
 }
 
@@ -116,10 +153,8 @@ extension SSRichTextView {
 
 extension SSRichTextView {
     fileprivate func scrollToVisible(_ selectionTextRange: NSTextRange, type: NSTextLayoutManager.SegmentType) {
-        guard var rect = textLayoutManager.textSegmentFrame(in: selectionTextRange, type: type) else {
-            return
-        }
-        let textContainer = textLayoutManager.textContainer!
+        guard var rect = textLayoutManager?.textSegmentFrame(in: selectionTextRange, type: type) else { return }
+        guard let textContainer = textLayoutManager?.textContainer else { return }
 
         if rect.width.isZero {
             // add padding around the point to ensure the visibility the segment

@@ -1,14 +1,30 @@
-# Introduction
-
-**Welcome to the Super Swift Markup libraries, apps and whatnot.** Collectively referred to as the *Super Swift Markup* projects.
+# Work In Progress 
 
 **Preamble:**
 
-This repository is a fresh continuation of the work that started with the [Super Swift Markdown Prototype]( https://github.com/SuperSwiftMarkup/SuperSwiftMarkdownPrototype ), but now with an eye towards real world integration. The git tree is also a fresh start, head over to the aforementioned [prototype repository](https://github.com/SuperSwiftMarkup/SuperSwiftMarkdownPrototype) to see the past history and screenshots from where that project left off.
+Initially our work began with a proof-of-concept prototype project ([see here]( https://github.com/SuperSwiftMarkup/SuperSwiftMarkdownPrototype )) and now that such has been proven viable, the work herein is a fresh continuation of the aforementioned POC prototype but as a complete rewrite and now with an eye towards designing easy-to-use libraries for integration by third party developers.
+
+The git tree is also a fresh start, so head over to the aforementioned [POC prototype](https://github.com/SuperSwiftMarkup/SuperSwiftMarkdownPrototype) to see the past history and screenshots from where that project left off (spoiler alert it’s super cool).
+
+Unless you’re interested in contributing towards or influencing the initial evolution of the SuperSwiftMarkup libraries, **please check back** every so often to see when this is ready for real world use. 
+
+**But overall I hope you’re excited as I am!** 
+
+Personally I, the author (Colbyn Wadman), have been messing around with miscellaneous problems concerning text processing and text rendering (in one form or another) for a very long time and—as far as the POC has demonstrated—it’s good to see something interesting come from it, and when I release my work, I hope you’ll be pleased with the results. 🤞
+
+# Marketing Abstract
+
+Nowadays it’s not so easy to become an App Store millionaire when apps are a dime a dozen and especially when native UI frameworks have been losing their competitive edge with regard to web technologies (which is a shame in and of itself).   
+
+The overarching goal of the SuperSwiftMarkup libraries is to deliver the next generation of text views that support user experiences unparalleled by web technologies. So that you can squeeze out that extra competitive edge in this hyper saturated and globalized marketplace of software.
+
+# Introduction for Developers
+
+**Welcome to the Super Swift Markup libraries, apps and whatnot.** Collectively referred to as the *Super Swift Markup* projects. 
 
 **Overall:** 
 
-The overarching goal of the *Super Swift Markup* projects is to build better iOS & macOS rich text views, starting with the *markdown* format as the base, which may be extended to support other markup formats (including **LaTeX math**) on an as needed basis.
+The overarching goal of the *Super Swift Markup* projects is to build the best iOS & macOS rich text views, starting with the *markdown* format as the base, which may be extended over time to support other markup formats (including **LaTeX math**) on an as needed basis.
 
 In general, what we want may be called “first class” markdown support as a text view. Meaning that all markdown block types are supported as rich text, and in a manner that accommodates all platform specific text view behaviors that users may expect (see “Meeting the expectations of iOS and macOS users” under the [Appendix](#Appendix)). Including the ability to select arbitrary text within any markdown block type and with the ability to extend such a selection across multiple and varying markdown block types.
 
@@ -36,8 +52,20 @@ Where the rendering engine is designed in such a way that can accommodate the fo
 
 ---
 
-# Other Notes
+# Current Development Notes 
 
+Consider the following,
+
+1. The one missing component that was not demonstrated in the POC prototype project was document editing, which is a more technically challenging task due to a few known concerns with potentially numerous unknowns that may require some API evolutions to get right.
+2, At the same time read-only rendering can be factored out—now—into a standalone library.  
+
+Overall, I think I’m going to split the libraries into two main categories which I call the,
+- **Typesetting Libraries:** supports text selection and navigation but in **read-only** mode and may use **lossy ASTs** / data models without any concern. 
+- **Rich Text Editing Libraries:** ideally based on lossless ASTs where the parsed representation should preserve all information including arbitrary whitespace. I call this isomorphic data modeling with regard to source-code parsing and string formatting. 
+
+Which solves a couple problems such that,
+1. The typesetting libraries can evolve to simply focus on beautifully rendered documents, while providing a more stable API for third party application developers who only need rich text display (with text selection and navigation support).     
+2. While the document editing libraries can independently evolve to best address the nuances of document editing. 
 
 
 ---
