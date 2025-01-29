@@ -12,7 +12,7 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(name: "SSMarkdown", targets: ["SSMarkdown"]),
-        .library(name: "SSMarkdownEngine", targets: ["SSMarkdownEngine"]),
+        .library(name: "ssm-rich-text-engine", targets: ["ssm-rich-text-engine"]),
     ],
     dependencies: [
         .package(url: "https://github.com/swiftlang/swift-markdown.git", branch: "main"),
@@ -21,26 +21,33 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
+        .target(name: "ssm-system-utilities"),
+        .target(name: "ssm-foundation-utilities"),
         .target(
             name: "SSMarkdownFormat",
             dependencies: [
                 "SwiftPrettyTree",
                 .product(name: "Markdown", package: "swift-markdown"),
+                "ssm-foundation-utilities"
             ]
         ),
         .target(
-            name: "SSMarkdownEngine",
+            name: "ssm-rich-text-engine",
             dependencies: [
                 "SSMarkdownFormat",
                 "SSMUtilities",
+                "ssm-system-utilities",
+                "ssm-foundation-utilities",
             ]
         ),
         .target(
             name: "SSMarkdownView",
             dependencies: [
-                "SSMarkdownEngine",
+                "ssm-rich-text-engine",
                 "SSMarkdownFormat",
                 "SSMUtilities",
+                "ssm-system-utilities",
+                "ssm-foundation-utilities",
             ]
         ),
         .target(name: "SSMUtilities"),

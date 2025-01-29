@@ -15,7 +15,7 @@
 
 import Foundation
 import Markdown
-import SSMUtilities
+import ssm_foundation_utilities
 
 extension SSDocument {
     public static func parse(source: String) -> SSDocument {
