@@ -1,7 +1,7 @@
 import XCTest
-@testable import SSMarkdownView
+@testable import ssm_markdown
 
-final class SSMarkdownViewTests: XCTestCase {
+final class ssm_markdownTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest

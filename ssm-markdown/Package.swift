@@ -4,17 +4,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "SSMarkdownFormat",
+    name: "ssm-markdown",
     platforms: [
         .iOS(.v17),
         .macOS(.v14),
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "SSMarkdownFormat", targets: ["SSMarkdownFormat"]),
+        .library(name: "SSMarkdown", targets: ["SSMarkdown"]),
     ],
     dependencies: [
-        .package(path: "../SSMUtilities"),
         .package(url: "https://github.com/swiftlang/swift-markdown.git", branch: "main"),
         .package(url: "https://github.com/colbyn/SwiftPrettyTree.git", exact: "0.6.5"),
     ],
@@ -24,11 +23,20 @@ let package = Package(
         .target(
             name: "SSMarkdownFormat",
             dependencies: [
-                "SSMUtilities",
                 "SwiftPrettyTree",
                 .product(name: "Markdown", package: "swift-markdown"),
             ]
         ),
-        .testTarget(name: "SSMarkdownFormatTests", dependencies: ["SSMarkdownFormat"]),
+        .target(name: "SSMarkdownView"),
+        .target(name: "SSMUtilities"),
+        .target(
+            name: "SSMarkdown",
+            dependencies: [
+                "SSMarkdownFormat",
+                "SSMarkdownView",
+                "SSMUtilities",
+            ]
+        ),
+        .testTarget(name: "ssm-markdown-tests", dependencies: ["SSMarkdown"]),
     ]
 )

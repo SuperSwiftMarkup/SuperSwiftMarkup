@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F40711112D49CB8300712776 /* SSMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = F40711102D49CB8300712776 /* SSMarkdown */; };
 		F40B3D362D496AB6005E6EBC /* BasicMarkdownPreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B3D352D496AB6005E6EBC /* BasicMarkdownPreviewApp.swift */; };
 		F40B3D3A2D496AB8005E6EBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B3D392D496AB8005E6EBC /* Assets.xcassets */; };
 		F40B3D3E2D496AB8005E6EBC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B3D3D2D496AB8005E6EBC /* Preview Assets.xcassets */; };
 		F40B3D472D496B85005E6EBC /* BasicMarkdownSample.md in Resources */ = {isa = PBXBuildFile; fileRef = F40B3D462D496B85005E6EBC /* BasicMarkdownSample.md */; };
-		F4CF4EEE2D49C1D00028F66B /* SSMarkdownView in Frameworks */ = {isa = PBXBuildFile; productRef = F4CF4EED2D49C1D00028F66B /* SSMarkdownView */; };
-		F4CF4EF12D49C3670028F66B /* SSMUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = F4CF4EF02D49C3670028F66B /* SSMUtilities */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4CF4EEE2D49C1D00028F66B /* SSMarkdownView in Frameworks */,
-				F4CF4EF12D49C3670028F66B /* SSMUtilities in Frameworks */,
+				F40711112D49CB8300712776 /* SSMarkdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +104,7 @@
 			);
 			name = BasicMarkdownPreview;
 			packageProductDependencies = (
-				F4CF4EED2D49C1D00028F66B /* SSMarkdownView */,
-				F4CF4EF02D49C3670028F66B /* SSMUtilities */,
+				F40711102D49CB8300712776 /* SSMarkdown */,
 			);
 			productName = BasicMarkdownPreview;
 			productReference = F40B3D322D496AB6005E6EBC /* BasicMarkdownPreview.app */;
@@ -138,8 +135,7 @@
 			);
 			mainGroup = F40B3D292D496AB6005E6EBC;
 			packageReferences = (
-				F4CF4EEC2D49C1D00028F66B /* XCLocalSwiftPackageReference "../SSMarkdownView" */,
-				F4CF4EEF2D49C3670028F66B /* XCLocalSwiftPackageReference "../SSMUtilities" */,
+				F407110F2D49CB8300712776 /* XCLocalSwiftPackageReference "../ssm-markdown" */,
 			);
 			productRefGroup = F40B3D332D496AB6005E6EBC /* Products */;
 			projectDirPath = "";
@@ -389,24 +385,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		F4CF4EEC2D49C1D00028F66B /* XCLocalSwiftPackageReference "../SSMarkdownView" */ = {
+		F407110F2D49CB8300712776 /* XCLocalSwiftPackageReference "../ssm-markdown" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../SSMarkdownView;
-		};
-		F4CF4EEF2D49C3670028F66B /* XCLocalSwiftPackageReference "../SSMUtilities" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../SSMUtilities;
+			relativePath = "../ssm-markdown";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F4CF4EED2D49C1D00028F66B /* SSMarkdownView */ = {
+		F40711102D49CB8300712776 /* SSMarkdown */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SSMarkdownView;
-		};
-		F4CF4EF02D49C3670028F66B /* SSMUtilities */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SSMUtilities;
+			productName = SSMarkdown;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
