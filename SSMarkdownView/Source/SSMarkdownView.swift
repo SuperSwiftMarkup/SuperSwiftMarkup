@@ -12,3 +12,6 @@
 // select.
 //
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
+
+@_exported import SSMUtilities
+@_exported import SSMarkdownFormat
