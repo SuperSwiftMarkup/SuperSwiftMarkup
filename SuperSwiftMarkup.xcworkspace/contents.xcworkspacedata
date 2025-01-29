@@ -13,4 +13,19 @@
    <FileRef
       location = "group:SSMUtilities">
    </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
+      location = "group:LICENSE.md">
+   </FileRef>
+   <FileRef
+      location = "group:CONTRIBUTING.md">
+   </FileRef>
+   <FileRef
+      location = "group:CLA.md">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/colbyn/Developer/SuperSwiftMarkup/SuperSwiftMarkup/NOTES.md">
+   </FileRef>
 </Workspace>
