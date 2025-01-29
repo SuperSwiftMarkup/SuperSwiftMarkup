@@ -2,7 +2,7 @@
 
 **Preamble:**
 
-Initially our work began with a proof-of-concept prototype project ([see here]( https://github.com/SuperSwiftMarkup/SuperSwiftMarkdownPrototype )) and now that such has been proven viable, the work herein is a fresh continuation of the aforementioned POC prototype but as a complete rewrite and now with an eye towards designing easy-to-use libraries for integration by third party developers.
+Initially the work began with a proof-of-concept prototype project ([see here]( https://github.com/SuperSwiftMarkup/SuperSwiftMarkdownPrototype )) and now that such has been proven viable, the work herein is a fresh continuation of the aforementioned POC prototype but as a complete rewrite and now with an eye towards designing easy-to-use libraries for integration by third party developers.
 
 The git tree is also a fresh start, so head over to the aforementioned [POC prototype](https://github.com/SuperSwiftMarkup/SuperSwiftMarkdownPrototype) to see the past history and screenshots from where that project left off (spoiler alert it’s super cool).
 
