@@ -59,7 +59,7 @@ Where the rendering engine is designed in such a way that can accommodate the fo
 Consider the following,
 
 1. The one missing component that was not demonstrated in the POC prototype project was document editing, which is a more technically challenging task due to a few known concerns with potentially numerous unknowns that may require some API evolutions to get right.
-2, At the same time read-only rendering can be factored out—now—into a standalone library.  
+2. At the same time read-only rendering can be factored out—now—into a standalone library.  
 
 Overall, I think I’m going to split the libraries into two main categories which I call the,
 - **Typesetting Libraries:** supports text selection and navigation but in **read-only** mode and may use **lossy ASTs** / data models without any concern. 
