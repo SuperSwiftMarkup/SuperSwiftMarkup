@@ -12,3 +12,7 @@
 // select.
 //
 // https://github.com/SuperSwiftMarkup/SuperSwiftMarkup/blob/main/LICENSE.md
+
+@_exported import type_engine_actions
+@_exported import type_engine_document_model
+@_exported import type_engine_ui

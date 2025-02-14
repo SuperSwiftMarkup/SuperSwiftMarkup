@@ -2,7 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:PunkEditor/PunkEditor.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:BasicMarkdownPreview/BasicMarkdownPreview.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ssm-punk-engine">
    </FileRef>
    <FileRef
       location = "group:ssm-markdown-typesetter">

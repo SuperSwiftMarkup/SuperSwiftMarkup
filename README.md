@@ -1,3 +1,13 @@
+# Update 2025-2-14 
+
+**I’m no longer concerned about supporting a general purpose markdown display and editor view unless someone is willing to sponsor such to completion.** 
+
+For now, my concerns are the immediate needs of a commercial project based on a fresh renovation of my old [note taking markup format]( https://github.com/subscript-publishing/subscript ) but reimagined in a manner not expressible as plaintext because I may as well apply my TextKit 2 capabilities and crate something totally unique in the market space. **Codenamed ‘punk’.**
+
+**Everything below** are my prior notes with regard to a general purpose markdown display and editor view.
+
+---
+
 # Work In Progress 
 
 **Preamble:**
