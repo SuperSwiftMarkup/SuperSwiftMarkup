@@ -6,7 +6,10 @@ For now, my concerns are the immediate needs of a commercial project based on a 
 
 This new format will finally accomplish my end goal of seamless typed markup and freeform content, with responsive layout that defines the presentation of information in as compact and maximally saturated a manner as possible that looks great on any device. Overall I want beautifully typeset information including the arrangement of freeform content. 
 
-The ultimate end goal is note publishing of the highest quality not mere note taking, and in a manner that presents best in web browsers as self contained webpages that will stand the test of time with regard to your painstakingly produced notes. I want notes that one can look back on in old age and admire their youthful work.  
+The ultimate end goal is note publishing of the highest quality not mere note taking, and in a manner that presents best in web browsers as self contained webpages that will stand the test of time with regard to your painstakingly produced notes. I want notes that one can look back on in old age and admire their youthful work.
+
+(Also because everything nowadays has to pertain or relate to AI in one way or another: no LLMs won’t supersede a great personal note taking platform. If anything, while I’m against relying on LLMs over developing your personal skills, there have been times where I’ll get some LLM in such a state that it actuality produces something interesting and sometimes I do wish I had a medium where I could save such in a neatly organized and arranged manner.) 
+  
 
 **Everything below** are my prior notes with regard to a general purpose markdown display and editor view.
 
