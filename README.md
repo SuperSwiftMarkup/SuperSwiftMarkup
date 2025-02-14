@@ -4,6 +4,10 @@
 
 For now, my concerns are the immediate needs of a commercial project based on a fresh renovation of my old [note taking markup format]( https://github.com/subscript-publishing/subscript ) but reimagined in a manner not expressible as plaintext because I may as well apply my TextKit 2 capabilities and crate something totally unique in the market space. **Codenamed ‘punk’.**
 
+This new format will finally accomplish my end goal of seamless typed markup and freeform content, with responsive layout that defines the presentation of information in as compact and maximally saturated a manner as possible that looks great on any device. Overall I want beautifully typeset information including the arrangement of freeform content. 
+
+The ultimate end goal is note publishing of the highest quality, not mere note taking.  
+
 **Everything below** are my prior notes with regard to a general purpose markdown display and editor view.
 
 ---
