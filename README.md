@@ -12,6 +12,18 @@ The ultimate end goal is note publishing of the highest quality not mere note ta
 
 **Also regarding naming conventions:** because some people have problems with the ‘SS’ prefix, I’ve since decided that ‘DD’ is actually easier to type, but I’ve already grown accustomed to the ‘SS’ prefix for all top-level publicly exposed top-level identifiers and furthermore many projects are based on this naming convention… So such may be what I’m stuck with but henceforth I’ll focus more on names of two words that begin with a ‘d’. (Personally as someone whose ancestors fought the axis powers I don’t think such is a bit deal and typing efficiency is most pressing on my mind as a programmer.) 
 
+**As I see it:**
+- AA (maybe)
+- SS (ideal)
+- DD (ideal)
+- ZZ (too hard to type)
+- XX (idk seems like Elong Musk’s namespace and I use ‘X’ for system type aliases)
+- CC (no used for C FFI stuff and kinda hard to type)
+- FF (maybe - kinda hard to type) 
+- WW (way too hard to type)
+- QQ (way too hard to type)
+
+
 **Everything below** are my prior notes with regard to a general purpose markdown display and editor view.
 
 ---
