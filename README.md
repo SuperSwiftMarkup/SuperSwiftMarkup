@@ -156,4 +156,3 @@ We aim to replicate the full spectrum of native text behavior users expect, incl
 
 * **Text Annotation**: highlights, comments
 * **Code Syntax Highlighting**: lazy-loaded, spell-check for comments only
-
